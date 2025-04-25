@@ -5,6 +5,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\PasswordController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,7 +41,15 @@ Route::post('forgot-password', [ForgotPasswordController::class, 'sendResetLink'
 Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetForm'])->name('password.reset');
 Route::post('reset-password', [ForgotPasswordController::class, 'resetPassword'])->name('password.update');
 
+// User Edit Profile Route
 Route::get('/profile/edit', [DashboardController::class, 'edit'])->name('profile.edit');
 Route::post('/profile/update', [DashboardController::class, 'update'])->name('profile.update');
+
+// User Change Password Route
+Route::middleware(['auth'])->group(function () {
+    Route::get('/change-password', [PasswordController::class, 'showChangeForm'])->name('password.change');
+    Route::post('/change-password', [PasswordController::class, 'update'])->name('password.update');
+});
+
 
 
