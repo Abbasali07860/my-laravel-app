@@ -11,7 +11,7 @@
 
 <body>
     <div class="layout-wrapper">
-        @include('layouts.header')
+    @include('layouts.header', ['user' => Auth::user()])
         @include('layouts.toastr')
         <div class="layout-body">
             @include('layouts.sidebar')

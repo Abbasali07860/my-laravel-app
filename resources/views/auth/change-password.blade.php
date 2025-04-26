@@ -20,12 +20,12 @@
         border-radius: 16px;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
         max-width: 400px;
-        width: 100%;
+        width: 150%;
     }
 
     .password-card h2 {
         text-align: center;
-        margin-bottom: 25px;
+        margin-bottom: 30px;
         font-size: 24px;
     }
 

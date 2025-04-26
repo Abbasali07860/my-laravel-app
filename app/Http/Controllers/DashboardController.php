@@ -29,7 +29,6 @@ class DashboardController extends Controller
             'email' => 'required|email|unique:users,email,' . $user->id,
             'image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
         ]);
-
         $user->name = $request->name;
         $user->email = $request->email;
 
