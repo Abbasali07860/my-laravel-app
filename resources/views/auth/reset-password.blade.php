@@ -9,7 +9,7 @@
     @include('layouts.toastr')
         <h2>Reset Your Password</h2>
 
-        <form method="POST" action="{{ route('password.update') }}">
+        <form method="POST" action="{{ route('password.ResetNew') }}">
             @csrf
             <input type="hidden" name="token" value="{{ $token }}">
 

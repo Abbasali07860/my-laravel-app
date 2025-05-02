@@ -38,7 +38,7 @@ class RegisterController extends Controller
         ]);
 
         // Send Welcome Email
-        Mail::to($user->email)->send(new WelcomeMail($user));
+        // Mail::to($user->email)->send(new WelcomeMail($user));
         return redirect()->route('login')->with('success', 'Registration successful. Please login.');
     }
 }

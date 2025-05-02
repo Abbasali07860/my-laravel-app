@@ -18,7 +18,7 @@
             <label>Email address</label>
             <div class="input-group">
             <i class="bi bi-envelope"></i>
-            <input type="email" placeholder="Your Email" required />
+            <input type="email" name="email" placeholder="Your Email" required />
             </div>
 
             <button type="submit" class="btn-primary">

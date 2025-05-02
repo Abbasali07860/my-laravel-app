@@ -9,14 +9,6 @@ body {
     flex-direction: column;
     height: 100vh;
 }
-
-/* .site-header {
-    background-color: #007bff;
-    color: white;
-    padding: 1rem;
-    text-align: center;
-}
-
  */
 .layout-body {
     display: flex;
@@ -24,7 +16,7 @@ body {
 }
 .sidebar {
     width: 220px;
-    background-color: #4f5360e0;
+    background-color: rgb(31, 41, 55);
     height: 100vh;
     position: fixed;
     top: 70px; /* below header */
@@ -190,37 +182,48 @@ body {
 /* User Header Design */
 
 .site-header {
-    background: #ffffff;
-    border-bottom: 1px solid #e5e7eb;
-    height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 999;
+    z-index: 100;
+}
+
+.container.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.left-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 .header-content {
+    width: 100%;
+    max-width: 1300px;
     display: flex;
     align-items: center;
-    width: 100%;
     justify-content: space-between;
 }
 
-.sidebar-toggle i {
-    font-size: 24px;
+.sidebar-toggle {
+    font-size: 20px;
     cursor: pointer;
-    color: #1f2937;
+    color: #333;
 }
 
 .app-title {
-    font-size: 25px;
-    font-weight: unset;
-    color: #ef6c00; /* New Orange Color */
-    margin-left: 10px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #007bff;
 }
 
 .user-dropdown {
@@ -228,10 +231,14 @@ body {
 }
 
 .user-info {
+    cursor: pointer;
     display: flex;
     align-items: center;
-    cursor: pointer;
     gap: 10px;
+}
+
+.user-info:hover {
+    background: #f9fafb;
 }
 
 .profile-container {
@@ -242,77 +249,74 @@ body {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden; /* important */
-    position: relative;
+    overflow: hidden;
+    border: 3px solid #f59e0b;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
 .profile-circle img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 2px solid #007bff;
 }
 
 
 .online-dot {
-    position: absolute;
-    bottom: 0;
-    right: 0;
     width: 10px;
     height: 10px;
-    background: #10b981;
-    border: 2px solid #fff;
+    background-color: #28a745;
     border-radius: 50%;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    border: 2px solid #fff;
 }
 
 /* Dropdown Menu */
 .dropdown-menu {
-    background: #ffffff;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-    position: absolute;
-    right: 0;
-    top: 60px;
-    width: 200px;
-    border-radius: 8px;
-    overflow: hidden;
     display: none;
-    flex-direction: column;
-    padding: 10px 0;
+    position: absolute;
+    top: 45px;
+    right: 0;
+    background-color: #fff;
+    width: 200px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-radius: 5px;
     z-index: 999;
+    padding: 10px 0;
 }
 
-.user-dropdown input:checked ~ .dropdown-menu {
-    display: flex;
+#dropdown-toggle:checked + .user-info + .dropdown-menu {
+    display: block;
 }
+
+/* .user-dropdown input:checked ~ .dropdown-menu {
+    display: flex;
+} */
 
 .dropdown-menu li {
-    list-style: none;
-    margin: 0;
+    padding: 10px 20px 8px;
 }
 
 .dropdown-header {
-    padding: 10px 11px;
-    border-bottom: 1px solid #e5e7eb;
-    background: #f0a669;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
 }
 
-.dropdown-menu a, 
-.dropdown-menu button {
+.dropdown-menu li a,
+.dropdown-menu li button {
     display: flex;
     align-items: center;
-    padding: 11px 19px;
-    color: #374151;
+    gap: 10px;
+    color: #333;
     text-decoration: none;
-    background: none;
     width: 100%;
+    background: none;
     border: none;
-    font-size: 15px;
-    text-align: left;
+    font: inherit;
     cursor: pointer;
-    transition: background 0.2s;
 }
 
 .dropdown-menu a i,
@@ -320,14 +324,15 @@ body {
     margin-right: 10px;
 }
 
-.dropdown-menu a:hover,
-.dropdown-menu button:hover {
-    background: #fff1dc9c;
+.dropdown-menu li a:hover,
+.dropdown-menu li button:hover {
+    background-color: #f8f9fa;
 }
 
 .logout-form {
     margin: 0;
 }
+/* User Header Design */
 
 /* User Profile Edit Design */
 
@@ -512,3 +517,43 @@ body {
     color: #374151;
 }
 
+
+/* User Navbar Design */
+.navbar-tabs {
+    display: flex;
+    gap: 20px;
+    flex: 1;
+    justify-content: center;
+}
+
+.navbar-tabs a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+.navbar-tabs a:hover {
+    background-color: #f2f2f2;
+    color: #007bff;
+}
+
+.right-section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.notification-icon {
+    font-size: 18px;
+    color: #333;
+    cursor: pointer;
+    position: relative;
+}
+
+.user-name {
+    font-weight: 500;
+    color: #333;
+}

@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\PasswordController;
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,7 +40,7 @@ Route::post('forgot-password', [ForgotPasswordController::class, 'sendResetLink'
 
 // Reset-Password Route
 Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetForm'])->name('password.reset');
-Route::post('reset-password', [ForgotPasswordController::class, 'resetPassword'])->name('password.update');
+Route::post('reset-password', [ForgotPasswordController::class, 'resetPassword'])->name('password.ResetNew');
 
 // User Edit Profile Route
 Route::get('/profile/edit', [DashboardController::class, 'edit'])->name('profile.edit');
@@ -50,6 +51,19 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/change-password', [PasswordController::class, 'showChangeForm'])->name('password.change');
     Route::post('/change-password', [PasswordController::class, 'update'])->name('password.update');
 });
+
+// Admin Routes
+
+Route::prefix('admin')->group(function () {
+    Route::get('/users', [AdminController::class, 'index'])->name('admin.users.index');
+    Route::get('/users/{id}/edit', [AdminController::class, 'edit'])->name('admin.users.edit');
+    Route::put('/users/{id}', [AdminController::class, 'update'])->name('admin.users.update');
+    Route::delete('/users/{id}', [AdminController::class, 'destroy'])->name('admin.users.destroy');
+
+    // ✅ Add this bulk update route:
+    Route::post('/users/bulk-update-status', [AdminController::class, 'bulkUpdateStatus'])->name('admin.users.bulk-update-status');
+});
+
 
 
 
